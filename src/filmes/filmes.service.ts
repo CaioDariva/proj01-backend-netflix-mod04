@@ -27,4 +27,7 @@ export class FilmesService {
   getAll() {
     return filmes;
   }
+  createFilme(filme: CreateFilmeDto) {
+    return filmes.push(filme);
+  }
 }
