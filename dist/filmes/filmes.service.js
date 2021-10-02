@@ -22,6 +22,9 @@ let FilmesService = class FilmesService {
     async createFilme(data) {
         return this.prisma.filme.create({ data });
     }
+    async deleteOneFilme(where) {
+        return this.prisma.filme.delete({ where });
+    }
 };
 FilmesService = __decorate([
     (0, common_1.Injectable)(),

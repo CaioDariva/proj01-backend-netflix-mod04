@@ -12,4 +12,7 @@ export class FilmesService {
   async createFilme(data: Prisma.FilmeCreateInput): Promise<Filme> {
     return this.prisma.filme.create({ data });
   }
+  async deleteOneFilme(where: Prisma.FilmeWhereUniqueInput): Promise<Filme> {
+    return this.prisma.filme.delete({ where });
+  }
 }
