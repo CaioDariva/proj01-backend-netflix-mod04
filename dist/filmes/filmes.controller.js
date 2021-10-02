@@ -20,25 +20,25 @@ let FilmesController = class FilmesController {
     constructor(filmesService) {
         this.filmesService = filmesService;
     }
-    index() {
+    async index() {
         return this.filmesService.getAll();
     }
-    create(createFilme) {
-        this.filmesService.createFilme(createFilme);
+    async create(createFilme) {
+        return this.filmesService.createFilme(createFilme);
     }
 };
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Array)
+    __metadata("design:returntype", Promise)
 ], FilmesController.prototype, "index", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_filme_dto_1.CreateFilmeDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], FilmesController.prototype, "create", null);
 FilmesController = __decorate([
     (0, common_1.Controller)('filmes'),
