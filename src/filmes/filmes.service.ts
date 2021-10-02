@@ -22,9 +22,6 @@ export class FilmesService {
   async deleteOneFilme(where: Prisma.FilmeWhereUniqueInput): Promise<Filme> {
     return this.prisma.filme.delete({ where });
   }
-  async deleteAllFilmes() {
-    return this.prisma.filme.deleteMany();
-  }
   async updateOneFilme(
     filmeId: number,
     data: Prisma.FilmeCreateInput,

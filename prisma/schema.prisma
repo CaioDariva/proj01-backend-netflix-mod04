@@ -11,9 +11,27 @@ generator client {
 }
 
 model Filme {
-  id              Int            @id @default(autoincrement())
+  id              Int            @default(autoincrement()) @id
   nome            String
   imagem          String?
   data_lancamento String
   tempo_duracao   Int
+  participantes   Participante[]
+  genero          Genero? @relation(fields: [generoId], references: [id])
+  generoId        Int?
+}
+
+model Participante {
+  id                Int            @default(autoincrement()) @id
+  nome              String
+  imagem            String
+  data_nascimento   String
+  participacao_como String
+  filme             Filme[]
+}
+
+model Genero {
+  id                Int            @default(autoincrement()) @id
+  nome              String
+  filmes            Filme[]
 }

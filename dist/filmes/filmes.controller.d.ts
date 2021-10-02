@@ -8,6 +8,5 @@ export declare class FilmesController {
     create(createFilme: CreateFilmeDto): Promise<Filme>;
     findUnique(id: number): Promise<Filme>;
     delete(id: string): Promise<Filme>;
-    deleteMany(): Promise<import(".prisma/client").Prisma.BatchPayload>;
     update(updateFilme: CreateFilmeDto, id: number): Promise<Filme>;
 }

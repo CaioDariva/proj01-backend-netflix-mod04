@@ -32,9 +32,6 @@ let FilmesController = class FilmesController {
     async delete(id) {
         return this.filmesService.deleteOneFilme({ id: Number(id) });
     }
-    async deleteMany() {
-        return this.filmesService.deleteAllFilmes();
-    }
     async update(updateFilme, id) {
         return this.filmesService.updateOneFilme(id, updateFilme);
     }
@@ -70,13 +67,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], FilmesController.prototype, "delete", null);
-__decorate([
-    (0, common_1.Delete)('/delete'),
-    (0, common_1.UsePipes)(common_1.ValidationPipe),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], FilmesController.prototype, "deleteMany", null);
 __decorate([
     (0, common_1.Put)('/update/:id'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),

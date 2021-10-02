@@ -42,12 +42,6 @@ export class FilmesController {
     return this.filmesService.deleteOneFilme({ id: Number(id) });
   }
 
-  @Delete('/delete')
-  @UsePipes(ValidationPipe)
-  async deleteMany() {
-    return this.filmesService.deleteAllFilmes();
-  }
-
   @Put('/update/:id')
   @UsePipes(ValidationPipe)
   async update(
