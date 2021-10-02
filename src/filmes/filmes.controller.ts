@@ -7,6 +7,8 @@ import {
   UsePipes,
   Delete,
   Param,
+  Put,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { CreateFilmeDto } from './dto/create-filme.dto';
 import { FilmesService } from './filmes.service';
@@ -28,9 +30,30 @@ export class FilmesController {
     return this.filmesService.createFilme(createFilme);
   }
 
+  @Get('/list/:id')
+  @UsePipes(ValidationPipe)
+  async findUnique(@Param('id', ParseIntPipe) id: number) {
+    return this.filmesService.getOneFilme(id);
+  }
+
   @Delete('/delete/:id')
   @UsePipes(ValidationPipe)
   async delete(@Param('id') id: string) {
     return this.filmesService.deleteOneFilme({ id: Number(id) });
+  }
+
+  @Delete('/delete')
+  @UsePipes(ValidationPipe)
+  async deleteMany() {
+    return this.filmesService.deleteAllFilmes();
+  }
+
+  @Put('/update/:id')
+  @UsePipes(ValidationPipe)
+  async update(
+    @Body() updateFilme: CreateFilmeDto,
+    @Param('id', ParseIntPipe) id: number,
+  ): Promise<Filme> {
+    return this.filmesService.updateOneFilme(id, updateFilme);
   }
 }

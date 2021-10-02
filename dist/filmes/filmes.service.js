@@ -22,8 +22,26 @@ let FilmesService = class FilmesService {
     async createFilme(data) {
         return this.prisma.filme.create({ data });
     }
+    async getOneFilme(filmeId) {
+        return this.prisma.filme.findUnique({
+            where: {
+                id: filmeId,
+            },
+        });
+    }
     async deleteOneFilme(where) {
         return this.prisma.filme.delete({ where });
+    }
+    async deleteAllFilmes() {
+        return this.prisma.filme.deleteMany();
+    }
+    async updateOneFilme(filmeId, data) {
+        return this.prisma.filme.update({
+            data,
+            where: {
+                id: filmeId,
+            },
+        });
     }
 };
 FilmesService = __decorate([
